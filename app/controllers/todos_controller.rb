@@ -17,6 +17,13 @@ class TodosController < ApplicationController
     end
   end
 
+  def toggle
+    @todo = Todo.find(params[:id])
+    @todo.update(is_completed: params[:is_completed])
+  
+    render json: { message: "Success" }
+  end
+
   private
 
   def todo_params
